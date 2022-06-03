@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="customers_json" format="json">
+      <types:shape format="weave" example="examples/DIYCustomerExample.json"><![CDATA[%dw 2.0
+
+type customers_json = {|
+  ID: Number {"typeId": "int"}, 
+  name: String, 
+  acctype: String, 
+  address: String, 
+  airmiles: String, 
+  creationdate: String
+|} {"example": "{\\\"ID\\\":1,\\\"name\\\":\\\"Ashok\\\",\\\"acctype\\\":\\\"Business\\\",\\\"address\\\":\\\"12345 GreenSt,Boulder,Colorado,82433,USA\\\",\\\"airmiles\\\":\\\"800\\\",\\\"creationdate\\\":\\\"2015-07-04T21:00:00\\\"}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#ebaf4795-67c9-4797-b068-d7914e5a2fce">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="customers_json"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#a53d19ed-aa26-4759-9ec9-f1e9bb143bc4">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="customers_json"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
