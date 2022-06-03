@@ -1,0 +1,16 @@
+[{
+	"ID": 1,
+	"name": "Ashok",
+	"acctype": "Business",
+	"address": "12345 GreenSt,Boulder,Colorado,82433,USA",
+	"airmiles": "800",
+	"creationdate": "2015-07-04T21:00:00"
+	
+}, {
+	"ID": 2,
+	"name": "Rahul",
+	"acctype": "Personal",
+	"address": "12346 GreenSt,Boulder,Colorado,72433,USA",
+	"airmiles": "650",
+	"creationdate": "2015-07-05T17:25:00"
+}]

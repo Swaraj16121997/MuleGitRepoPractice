@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<configuration doc:name="Configuration" doc:id="cb682b13-e81b-4eb2-b468-c677f96fe149" defaultErrorHandler-ref="globalErrorHandler" />
+	<error-handler name="globalErrorHandler" doc:id="f94ad638-e0d3-40aa-aae4-2be59386ba4f" >
+		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="7098819c-1fe1-4ae2-b5d0-c8094e943ca6" type="ANY" >
+			<ee:transform doc:name="Transform Message" doc:id="cd3c7145-fced-44ce-8ac4-ce9eac181c9f" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"message": "Accounts not found"
+}]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+			<set-variable value="404" doc:name="httpStatus" doc:id="f7e6183a-a415-4da0-9162-b5e3170c77a2" variableName="httpStatus" />
+		</on-error-propagate>
+	</error-handler>
+</mule>
